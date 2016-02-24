@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Register </title>
+    <title>Profile </title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -29,67 +29,45 @@
 
 <body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Form maker</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="register.html">Register</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="#">Username</a></li>
-                <li><a href="#">Logout</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-pills nav-stacked">
-                <li role="presentation"><a href="home.html">Home</a></li>
-                <li role="presentation"><a href="profile.html">Profile</a></li>
-                <li role="presentation"><a href="admin.html">Admin</a></li>
-                <li role="presentation"><a href="forms.html">Forms</a></li>
-            </ul>
-        </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header col-sm-offset-1">Register</h1>
+            <h1 class="page-header col-sm-offset-1">Profile</h1>
             <form class="form-horizontal">
                 <div class="form-group">
                     <label for="inputUsername" class="col-sm-2 control-label">Username: </label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+                        <input type="text" ng-model="profileUsername" class="form-control" id="inputUsername" placeholder="Username">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword" class="col-sm-2 control-label">Password: </label>
                     <div class="col-sm-6">
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                        <input type="password" ng-model="profilePassword" class="form-control" id="inputPassword" placeholder="Password">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputVerify" class="col-sm-2 control-label">Verify Password: </label>
+                    <label for="inputFirstName" class="col-sm-2 control-label">First Name: </label>
                     <div class="col-sm-6">
-                        <input type="password" class="form-control" id="inputVerify" placeholder="Verify Password">
+                        <input type="text" ng-model="profileFirstName" class="form-control" id="inputFirstName" placeholder="First Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputLastName" class="col-sm-2 control-label">Last Name: </label>
+                    <div class="col-sm-6">
+                        <input type="text" ng-model="profileLastName" class="form-control" id="inputLastName" placeholder="Last Name">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail" class="col-sm-2 control-label">Email: </label>
                     <div class="col-sm-6">
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                        <input type="email" ng-model="profileEmail" class="form-control" id="inputEmail" placeholder="Email">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default">Register</button>
+                        <button type="submit" ng-click="update(profileUsername,
+                        profilePassword, profileFirstName, profileLastName, profileEmail)" class="btn btn-default">Update</button>
                     </div>
                 </div>
             </form>
