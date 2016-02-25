@@ -13,9 +13,9 @@
         $scope.deleteForm = deleteForm;
         $scope.selectForm = selectForm;
         var vm = this;
-        vm.testFomrs = [{"_id": "020", "title": "CDs",      "userId": 234}];
+
         function addForm(formName) {
-            console.log("click!");
+            console.log("addFrom!");
             var newForm = {};
             newForm.userId = $rootScope.user._id;
             newForm.title = formName;
@@ -23,18 +23,24 @@
 
         }
 
-        function updateForm() {
+        function updateForm(formName) {
+            if ($scope.selected != null) {
+                $scope.selected.title = formName;
+                $scope.formService.updateFormById($scope.selected._id, $scope.selected, function(){});
+            }
 
         }
 
-        function deleteForm() {
+        function deleteForm(index) {
+            var id = FormService.forms[index]._id;
+            $scope.formService.deleteFormById(id, (function(){}));
 
         }
 
-        function selectForm($index) {
-            var form = FormService.forms[$index];
-            console.log(form.title);
-
+        function selectForm(index, formName) {
+            console.log(index);
+            $scope.selected = $scope.formService.forms[index];
+            $scope.formName = $scope.selected.title;
         }
     }
 })();

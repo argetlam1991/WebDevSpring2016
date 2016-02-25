@@ -22,9 +22,9 @@
         ];
 
         service.findUserByCredentials = function(username, password, callback) {
-            for (var user in this.currentUsers) {
-                if (user.username == username && user.password == password) {
-                    callback(user);
+            for(var i = 0; i < this.currentUsers.length; i++) {
+                if (this.currentUsers[i].username == username && this.currentUsers[i].password == password) {
+                    callback(this.currentUsers[i]);
                 }
             }
             callback(null);
@@ -42,10 +42,9 @@
 
         service.deleteUserById = function(id, callback) {
             var index = -1;
-            for (var user in this.currentUsers) {
-                if (user._id == id) {
-                    index = this.currentUsers.indexOf(user);
-                    break;
+            for(var i = 0; i < this.currentUsers.length; i++) {
+                if (this.currentUsers[i]._id == id) {
+                    index = i;
                 }
             }
             if (index > -1) {
@@ -56,10 +55,9 @@
 
         service.updateUser = function(userId, user, callback) {
             var index = -1;
-            for (var user in this.currentUsers) {
-                if (user._id == userId) {
-                    index = this.currentUsers.indexOf(user);
-                    break;
+            for(var i = 0; i < this.currentUsers.length; i++) {
+                if (this.currentUsers[i]._id == id) {
+                    index = i;
                 }
             }
             if (index > -1) {

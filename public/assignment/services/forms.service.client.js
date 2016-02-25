@@ -24,19 +24,19 @@
 
         service.findAllFormsForUser = function(userId, callback) {
             var formsForUser = [];
-            for (var form in this.forms) {
-                if (form.userId == userId) {
-                    formsForUser.push(form);
+            for (var i = 0; i  < this.forms.length; i++) {
+                if (this.forms[i].userId == userId) {
+                    formsForUser.push(forms[i]);
                 }
             }
             callback(formsForUser);
         };
 
-        service.deleteFromById = function(formId, callback) {
+        service.deleteFormById = function(formId, callback) {
             var index = -1;
-            for (var form in this.forms) {
-                if (form._id = formId) {
-                    index = this.currentUsers.indexOf(form);
+            for(var i = 0; i < this.forms.length; i++) {
+                if (this.forms[i]._id == formId) {
+                    index = i;
                 }
             }
             if (index > -1) {
@@ -47,9 +47,9 @@
 
         service.updateFormById = function(formId, newForm, callback) {
             var index = -1;
-            for (var form in this.forms) {
-                if (form._id = formId) {
-                    index = this.currentUsers.indexOf(form);
+            for(var i = 0; i < this.forms.length; i++) {
+                if (this.forms[i]._id == formId) {
+                    index = i;
                 }
             }
             if (index > -1) {

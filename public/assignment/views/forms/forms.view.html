@@ -59,14 +59,14 @@
                         </div>
                     </td>
                 </tr>
-                <tr ng-repeat="form in FormController.FormService.forms">
+                <tr ng-repeat="form in formService.forms">
                     <td>{{form.title}}</td>
                     <td>
                         <div class="col-sm-6">
                             <span ng-click="deleteForm($index)" class="glyphicon glyphicon-remove"></span>
                         </div>
                         <div class="col-sm-6">
-                            <span ng-click="selectFrom($index)" class="glyphicon glyphicon-pencil"></span>
+                            <span ng-click="selectForm($index)" class="glyphicon glyphicon-pencil"></span>
                         </div>
                     </td>
                 </tr>
