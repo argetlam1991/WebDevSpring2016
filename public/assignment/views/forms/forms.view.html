@@ -48,47 +48,25 @@
                 <tbody>
                 <tr>
                     <td>
-                        <input type="text" class="form-control" placeholder="name">
+                        <input type="text" ng-model="formName"  class="form-control" placeholder="name">
                     </td>
                     <td>
                         <div class="col-sm-6">
-                            <span class="glyphicon glyphicon-plus"></span>
+                            <span ng-click="addForm(formName)" class="glyphicon glyphicon-plus"></span>
                         </div>
                         <div class="col-sm-6">
-                            <span class="glyphicon glyphicon-ok"></span>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Registration Form</td>
-                    <td>
-                        <div class="col-sm-6">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </div>
-                        <div class="col-sm-6">
-                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span ng-click="updateForm(formName)" class="glyphicon glyphicon-ok"></span>
                         </div>
                     </td>
                 </tr>
-                <tr>
-                    <td>Contact List</td>
+                <tr ng-repeat="form in FormController.FormService.forms">
+                    <td>{{form.title}}</td>
                     <td>
                         <div class="col-sm-6">
-                            <span class="glyphicon glyphicon-remove"></span>
+                            <span ng-click="deleteForm($index)" class="glyphicon glyphicon-remove"></span>
                         </div>
                         <div class="col-sm-6">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>To Do List</td>
-                    <td>
-                        <div class="col-sm-6">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </div>
-                        <div class="col-sm-6">
-                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span ng-click="selectFrom($index)" class="glyphicon glyphicon-pencil"></span>
                         </div>
                     </td>
                 </tr>
