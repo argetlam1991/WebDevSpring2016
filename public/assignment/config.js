@@ -9,6 +9,10 @@
                 .when("/home", {
                     templateUrl: "views/home/home.view.html"
                 })
+                .when("/form-fields", {
+                    templateUrl: "views/forms/form-fields.view.html",
+                    controller: "FormFieldsController"
+                })
                 .when("/forms", {
                     templateUrl: "views/forms/forms.view.html",
                     controller: "FormController"

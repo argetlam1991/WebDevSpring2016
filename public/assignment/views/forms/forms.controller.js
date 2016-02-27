@@ -7,6 +7,7 @@
         .controller("FormController", FormController);
 
     function FormController($scope, $location, $rootScope, FormService) {
+        $scope.$location = $location;
         $scope.formService = FormService;
         $scope.addForm = addForm;
         $scope.updateForm = updateForm;
