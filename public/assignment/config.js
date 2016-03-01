@@ -34,7 +34,7 @@
                     controller: "LoginController"
                 })
                 .otherwise({
-                    redirectTo: "index.html",
+                    redirectTo: "/home",
                 });
         });
 })();
