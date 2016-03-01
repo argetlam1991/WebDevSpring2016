@@ -25,6 +25,7 @@
             for(var i = 0; i < this.currentUsers.length; i++) {
                 if (this.currentUsers[i].username == username && this.currentUsers[i].password == password) {
                     callback(this.currentUsers[i]);
+                    return;
                 }
             }
             callback(null);

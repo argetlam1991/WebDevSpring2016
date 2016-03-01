@@ -38,7 +38,7 @@
 
         }
 
-        function selectForm(index, formName) {
+        function selectForm(index) {
             console.log(index);
             $scope.selected = $scope.formService.forms[index];
             $scope.formName = $scope.selected.title;

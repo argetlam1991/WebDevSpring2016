@@ -7,6 +7,10 @@
         .controller("ProfileController", ProfileController);
     function ProfileController($scope, $rootScope, UserService) {
         $scope.update = update;
+        $scope.profileUsername = $rootScope.user.username;
+        $scope.profilePassword = $rootScope.user.password;
+        $scope.profileFirstName = $rootScope.user.firstName;
+        $scope.profileLastName = $rootScope.user.lastName;
 
         function update(profileUsername,
                         profilePassword, profileFirstName, profileLastName) {

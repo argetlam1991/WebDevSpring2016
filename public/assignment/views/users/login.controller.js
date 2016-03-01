@@ -10,10 +10,12 @@
 
         function login(username, password) {
             console.log("click!");
-            UserService.findUserByCredentials(username, password, (function(u){$rootScope.user = u}));
-            if ($rootScope != null) {
-                $location.path("/profile");
-            }
+            UserService.findUserByCredentials(username, password, function(user) {
+                $rootScope.user = user;
+                if ($rootScope.user != null) {
+                    $location.path("/profile");
+                }
+            })
         }
     }
 })();
