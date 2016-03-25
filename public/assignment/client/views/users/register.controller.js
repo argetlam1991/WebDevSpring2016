@@ -17,9 +17,18 @@
                 "password": registerPassword,
                 "roles": ["student"]
             };
-            UserService.createUser(user, (function(){}));
-            $rootScope.user = user;
-            $location.path("/profile");
+            UserService.createUser(user)
+                .then(function(response){
+                    var newuser = response.data;
+                    if (newuser != null) {
+                        $rootScope.user = response.data;
+                        $location.path("/profile");
+                    }
+                }, function(response) {
+                    console.log("regiset failed");
+                    console.log(response);
+                });
+
         }
     }
 })();

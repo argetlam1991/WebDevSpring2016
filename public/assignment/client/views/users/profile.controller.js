@@ -5,8 +5,10 @@
     angular
         .module("FormBuilderApp")
         .controller("ProfileController", ProfileController);
+
     function ProfileController($scope, $rootScope, UserService) {
         $scope.update = update;
+        console.log($rootScope.user);
         $scope.profileUsername = $rootScope.user.username;
         $scope.profilePassword = $rootScope.user.password;
         $scope.profileFirstName = $rootScope.user.firstName;
@@ -20,7 +22,10 @@
             user.password = profilePassword;
             user.firstName = profileFirstName;
             user.lastName = profileLastName;
-            UserService.updateUser(user._id, user, (function(){}));
+            UserService.updateUser(user._id, user)
+                .success(function(response){
+                    console.log(response);
+                });
             $rootScope.user = user;
         }
     }
