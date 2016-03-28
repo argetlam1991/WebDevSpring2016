@@ -13,6 +13,9 @@
         $scope.decodeOptions = decodeOptions;
         $scope.encodeOptions = encodeOptions;
         $scope.label = field.label;
+
+
+
         if (field.hasOwnProperty("placeholder")) {
             $scope.text = field.placeholder;
         }

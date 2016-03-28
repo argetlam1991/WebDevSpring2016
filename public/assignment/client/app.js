@@ -3,5 +3,5 @@
  */
 (function(){
     angular
-        .module("FormBuilderApp", ["ngRoute" , 'ngAnimate', 'ui.bootstrap'])
+        .module("FormBuilderApp", ["ngRoute" , 'ngAnimate', 'ui.bootstrap', 'ui.sortable'])
 })();

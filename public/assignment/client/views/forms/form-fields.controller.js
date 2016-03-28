@@ -13,6 +13,25 @@
         $scope.addField = addField;
         $scope.deleteField = deleteField;
         $scope.editField = editField;
+        $scope.sortableOptions = {
+            start: function (event, ui) {
+                $scope.oldIndex = ui.item.index();
+            },
+
+            stop: function (event, ui) {
+                var oldIndex = $scope.oldIndex;
+                var newIndex = ui.item.index();
+                var pair = {};
+                pair.oldIndex = oldIndex;
+                pair.newIndex = newIndex;
+                FieldService.updateOrder(formId, pair)
+                    .then(function success(response) {
+                        getField();
+                    }, function failed(response) {
+                        getField();
+                    })
+            }
+        }
 
         var formId = $routeParams.formId;
         getField();

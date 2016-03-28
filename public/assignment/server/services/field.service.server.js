@@ -41,6 +41,14 @@ module.exports = function(app, formModel, db) {
         res.send("update field");
     });
 
+    app.put('/api/assignment/form/:formId/updateFieldOrder', function (req, res) {
+        console.log("update order");
+        var formId = req.params.formId;
+        var pair = req.body;
+        formModel.updateFieldOrder(formId, pair);
+        res.send("update order");
+    });
+
 
 
 };

@@ -30,6 +30,10 @@
             return $http.put('/api/assignment/form/' + formId + '/field/' + fieldId, field);
         };
 
+        service.updateOrder = function(formId, pair) {
+            return $http.put('/api/assignment/form/'+ formId +'/updateFieldOrder', pair);
+        };
+
         return  service;
     }
 })();

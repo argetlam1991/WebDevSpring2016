@@ -6,7 +6,7 @@
         <li ng-class="{'active' : $location.url().indexOf('form-fields') != -1}"><a>Fields</a></li>
     </ul>
     <form>
-        <ul id = "sortable">
+        <ul ui-sortable = "sortableOptions" ng-model="model.fields">
             <li ng-repeat="field in model.fields" ng-switch on="field.type">
                 <label>
                     {{field.label}}
@@ -52,7 +52,6 @@
 
             </li>
         </ul>
-
     </form>
     <hr class="divider">
     <div class="form-group col-sm-12">

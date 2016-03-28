@@ -115,6 +115,20 @@ module.exports = function(app) {
             this.forms[index] = form;
         }
     }
+
+    formModel.updateFieldOrder = function(formId, pair) {
+        var formIndex = -1;
+        for(var i = 0; i < this.forms.length; i++) {
+            if (this.forms[i]._id == formId) {
+                formIndex = i;
+                break;
+            }
+        }
+        if (formIndex == -1) return ;
+        var field = this.forms[formIndex].fields[pair.oldIndex];
+        this.forms[formIndex].fields.splice(pair.oldIndex, 1);
+        this.forms[formIndex].fields.splice(pair.newIndex, 0, field);
+    }
     
     formModel.updateField = function(formId, fieldId, field) {
         var formIndex = -1;
