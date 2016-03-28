@@ -9,9 +9,9 @@
                 .when("/home", {
                     templateUrl: "views/home/home.view.html"
                 })
-                .when("/form-fields", {
+                .when("/form/:formId/fields", {
                     templateUrl: "views/forms/form-fields.view.html",
-                    controller: "FormFieldsController"
+                    controller: "FieldController"
                 })
                 .when("/forms", {
                     templateUrl: "views/forms/forms.view.html",
@@ -27,7 +27,7 @@
                 })
                 .when("/admin", {
                     templateUrl: "views/admin/admin.view.html",
-                   // controller: "AdminController"
+                    controller: "AdminController"
                 })
                 .when("/login", {
                     templateUrl: "views/users/login.view.html",

@@ -1,0 +1,50 @@
+<div class="modal-header">
+    <h3 class="modal-tital">{{field.type}}</h3>
+</div>
+<div ng-switch on="field.type">
+    <div class="modal-body">
+        <div class="form-group">
+            <label>
+                Label
+            </label>
+            <input ng-model="label" type="text" class="form-control input-lg" placeholder="label">
+        </div>
+
+        <div ng-switch-when="TEXTAREA">
+            <label>
+                Placeholder
+            </label>
+            <input ng-model="text" type="text" class="form-control input-lg" placeholder="text">
+        </div>
+
+        <div ng-switch-when="DATE">
+        </div>
+
+        <div class="form-group" ng-switch-when="OPTIONS">
+            <label>Option</label>
+            <textarea ng-model="$parent.textArea" class="form-control input-lg" rows="5"></textarea>
+        </div>
+
+        <div class="form-group" ng-switch-when="RADIOS">
+            <label>Option</label>
+            <textarea ng-model="$parent.textArea" class="form-control input-lg" rows="5"></textarea>
+        </div>
+
+        <div class="form-group" ng-switch-when="CHECKBOXES">
+            <label>Option</label>
+            <textarea ng-model="$parent.textArea" class="form-control input-lg" rows="5"></textarea>
+        </div>
+
+        <div ng-switch-default>
+            <label>
+                Placeholder
+            </label>
+            <input ng-model="text" type="text" class="form-control input-lg" placeholder="text">
+        </div>
+
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

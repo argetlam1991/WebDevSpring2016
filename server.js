@@ -15,6 +15,7 @@ require("./public/assignment/server/services/user.service.server.js")(app, userM
 
 var formModel = require("./public/assignment/server/models/form.model.js")(app);
 require("./public/assignment/server/services/form.service.js")(app, formModel);
+require("./public/assignment/server/services/field.service.server.js")(app, formModel);
 
 app.get('/hello', function(req, res){
     res.send('hello world');

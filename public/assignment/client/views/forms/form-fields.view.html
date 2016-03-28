@@ -1,150 +1,77 @@
-
-
 <div class="container-fluid">
-        <script src="views/forms/forms.controller.js"></script>
-            <h1>Forms</h1>
-            <ul class="nav nav-tabs">
-                <li ng-class="{'active' : $location.url().indexOf('forms') != -1}"><a href="#/forms">Forms</a></li>
-                <li ng-class="{'active' : $location.url().indexOf('form-fields') != -1}"><a href="#/form-fields">Fields</a></li>
-            </ul>
-            <form>
-                <div class="form-group col-sm-12">
-                    <div class="col-sm-12">
-                        <label for="inputFirstname">Firstname: </label>
-                    </div>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="inputFirstname" placeholder="Firstname">
-                    </div>
-                    <div class="col-sm-6">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                        <span class="glyphicon glyphicon-plus"></span>
-                        <span class="glyphicon glyphicon-remove"></span>
-                        <span class="glyphicon glyphicon-align-justify"></span>
-                    </div>
+    <script src="/client/js/sortable.js"></script>
+    <h1>Forms</h1>
+    <ul class="nav nav-tabs">
+        <li ng-class="{'active' : $location.url().indexOf('forms') != -1}"><a href="#/forms">Forms</a></li>
+        <li ng-class="{'active' : $location.url().indexOf('form-fields') != -1}"><a href="#/form-fields">Fields</a></li>
+    </ul>
+    <form>
+        <ul id = "sortable">
+            <li ng-repeat="field in model.fields" ng-switch on="field.type">
+                <label>
+                    {{field.label}}
+                </label>
+                <div  class="input-group input-group-lg">
+                    <div ng-switch-when="TEXTAREA">
+                        <textarea class="form-control input-lg" id="inputTextArea" ng-model="textareaValue">{{field.placeholder}}</textarea>
                 </div>
-                <div class="form-group col-sm-12">
-                    <div class="col-sm-12">
-                        <label for="inputLastname">Lastname: </label>
-                    </div>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="inputLastname" placeholder="Lastname">
-                    </div>
-                    <div class="col-sm-6">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                        <span class="glyphicon glyphicon-plus"></span>
-                        <span class="glyphicon glyphicon-remove"></span>
-                        <span class="glyphicon glyphicon-align-justify"></span>
-                    </div>
+                <div ng-switch-when="DATE">
+                    <input type="date" class="form-control" id="inputDate" placeholder="{{field.placeholder}}">
                 </div>
-
-                <div class="form-group col-sm-12">
-                    <div class="col-sm-12">
-                        <label for="inputDateofBirth">Date of Birth: </label>
-                    </div>
-                    <div class="col-sm-6">
-                        <input type="date" class="form-control" id="inputDateofBirth" placeholder="select date">
-                    </div>
-                    <div class="col-sm-6">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                        <span class="glyphicon glyphicon-plus"></span>
-                        <span class="glyphicon glyphicon-remove"></span>
-                        <span class="glyphicon glyphicon-align-justify"></span>
-                    </div>
-                </div>
-
-                <div class="form-group col-sm-12">
-                    <div class="col-sm-12">
-                        <label for="inputGender">Gender: </label>
-                    </div>
-                    <div class="col-sm-6">
-                        <select class="form-control" id="inputGender" placeholder="select gender">
-                            <option>Male</option>
-                            <option>Female</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-6">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                        <span class="glyphicon glyphicon-plus"></span>
-                        <span class="glyphicon glyphicon-remove"></span>
-                        <span class="glyphicon glyphicon-align-justify"></span>
-                    </div>
-                </div>
-
-                <div class="form-group col-sm-12">
-                    <div class="col-sm-12">
-                        <label>Roles: </label>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" value="">
-                                Admin
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" value="">
-                                Strudent
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" value="">
-                                User
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                        <span class="glyphicon glyphicon-plus"></span>
-                        <span class="glyphicon glyphicon-remove"></span>
-                        <span class="glyphicon glyphicon-align-justify"></span>
-                    </div>
-                </div>
-
-                <div class="form-group col-sm-12">
-                    <div class="col-sm-12">
-                        <label>License Agreement: </label>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadio1" value="options" checked>
-                                Yes
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadio2" value="options" >
-                                No
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                        <span class="glyphicon glyphicon-plus"></span>
-                        <span class="glyphicon glyphicon-remove"></span>
-                        <span class="glyphicon glyphicon-align-justify"></span>
-                    </div>
-                </div>
-            </form>
-            <hr class="divider">
-            <div class="form-group col-sm-12">
-                <div class="col-sm-12">
-                    <label for="inputNewField">Add New Field: </label>
-                </div>
-                <div class="col-sm-6">
-                    <select class="form-control" id="inputNewField" placeholder="select type">
-                        <option>Single Line Text</option>
-                        <option>Date</option>
-                        <option>Dropdown</option>
-                        <option>Checkboxes</option>
-                        <option>Radio buttons</option>
-                        <option>Paragraph Text</option>
+                <div ng-switch-when="OPTIONS">
+                    <select class="form-control input-lg" id="inputOption"
+                            placeholder="{{field.placeholder}}">
+                        <option ng-repeat="option in field.options">{{option.label}}</option>
                     </select>
                 </div>
-                <div class="col-sm-6">
-                    <span class="glyphicon glyphicon-plus"></span>
+                <div ng-switch-when="CHECKBOXES">
+                    <div class="checkbox input-lg">
+                        <label ng-repeat = "option in field.options">
+                            <input type="checkbox" value="">
+                            {{option.label}}
+                        </label>
+                    </div>
                 </div>
+                <div ng-switch-when="RADIOS">
+                    <div class="radio input-lg">
+                        <label ng-repeat="option in field.options">
+                            <input type="radio" name="optionsRadios" id="inputRadio" value="options" checked>
+                            {{option.label}}
+                        </label>
+                    </div>
+                </div>
+                <div ng-switch-default>
+                    <input type="text" class="form-control input-lg" placeholder="{{field.placeholder}}">
+                </div>
+                <div class="input-group-btn">
+                    <span class="btn btn-default btn-lg glyphicon glyphicon-pencil" ng-click="editField(field)"></span>
+                    <span class="btn btn-default btn-lg glyphicon glyphicon-plus"></span>
+                    <span class="btn btn-default btn-lg glyphicon glyphicon-remove"  ng-click="deleteField(field)"></span>
+                    <span class="btn btn-default btn-lg glyphicon glyphicon-align-justify"></span>
+                </div>
+
+            </li>
+        </ul>
+
+    </form>
+    <hr class="divider">
+    <div class="form-group col-sm-12">
+        <div class="col-sm-12">
+            <label for="inputNewField">Add New Field: </label>
+        </div>
+        <div class="input-group input-group-lg">
+            <select ng-model = "model.fieldType" class="form-control input-lg" id="inputNewField" placeholder="select type">
+                <option>Single Line Text</option>
+                <option>Date</option>
+                <option>Dropdown</option>
+                <option>Checkboxes</option>
+                <option>Radio buttons</option>
+                <option>Paragraph Text</option>
+            </select>
+            <div class="input-group-btn">
+                <span ng-click="addField(model.fieldType)" class="btn btn-default btn-lg glyphicon glyphicon-plus"></span>
             </div>
+        </div>
+
+    </div>
 </div>

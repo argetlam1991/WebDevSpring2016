@@ -10,14 +10,6 @@ module.exports = function(app, formModel, db) {
         res.json(forms);
     });
 
-    app.get('/api/assignment/form/:formid/field', function (req, res) {
-        var id = req.params.formid;
-        var form = formModel.findFormById(id);
-        console.log(form);
-        res.json(form);
-
-    });
-
     app.delete('/api/assignment/form/:formId', function (req, res) {
         var id = req.params.formId;
         console.log("delete " + id);
