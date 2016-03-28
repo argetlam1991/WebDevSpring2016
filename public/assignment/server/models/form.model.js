@@ -36,9 +36,7 @@ module.exports = function(app) {
     
     formModel.findFormById = function (id) {
         var index = -1;
-        console.log(id);
         for (var i = 0; i < this.forms.length; i++) {
-            console.log(this.forms[i]._id);
             if (this.forms[i]._id == id) {
                 index = i;
                 break;

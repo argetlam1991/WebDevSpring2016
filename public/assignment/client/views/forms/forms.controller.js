@@ -33,6 +33,7 @@
             var newForm = {};
             newForm.userId = $rootScope.user._id;
             newForm.title = formName;
+            newForm.fields = [];
             FormService.createFormForUser($rootScope.user._id, newForm)
                 .then(function success(response){
                     console.log("create form success");

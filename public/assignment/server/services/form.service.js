@@ -6,15 +6,12 @@ module.exports = function(app, formModel, db) {
     app.get('/api/assignment/user/:userId/form', function (req, res) {
         var userId = req.params.userId;
         var forms = formModel.findFormsByUserId(userId);
-        console.log(forms);
         res.json(forms);
     });
 
     app.delete('/api/assignment/form/:formId', function (req, res) {
         var id = req.params.formId;
-        console.log("delete " + id);
         formModel.deleteForm(id);
-        console.log(formModel.forms);
         res.send("delete " + id);
     });
 

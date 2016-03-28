@@ -12,7 +12,6 @@ module.exports = function(app, userModel, db) {
 
     app.get('/api/assignment/user/username', function (req, res) {
         var user = userModel.findUserByUsername(req.query.username);
-        console.log(user);
         res.json(user);
 
     });
@@ -32,7 +31,6 @@ module.exports = function(app, userModel, db) {
 
     app.post('/api/assignment/user', function (req, res) {
         var newUser = userModel.create(req.body);
-        console.log(newUser);
         res.json(newUser);
     });
 
@@ -44,10 +42,9 @@ module.exports = function(app, userModel, db) {
 
     app.put('/api/assignment/user/:id', function (req, res) {
         var id = req.params.id;
-        console.log(req.body);
         var user = req.body;
         userModel.update(id, user);
-        res.json(newUser);
+        res.json("updated");
     });
 
 

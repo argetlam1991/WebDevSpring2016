@@ -63,7 +63,6 @@ module.exports = function(app) {
 
     userModel.update = function (userId, user) {
         var index = -1;
-        console.log(user);
         for(var i = 0; i < this.users.length; i++) {
             if (this.users[i]._id == userId) {
                 index = i;
@@ -72,7 +71,6 @@ module.exports = function(app) {
         if (index > -1) {
             this.users[index] = user;
         }
-        console.log(this.users);
     };
 
     userModel.delete = function (id) {
