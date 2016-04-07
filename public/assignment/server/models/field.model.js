@@ -76,7 +76,7 @@ module.exports = function(app, mongoose, formModel) {
     }
 
 
-    fieldModel.updateFieldOrder = function(formId, pair) {
+    fieldModel.updateFieldOrder = function(formId, pair, callback) {
         formModel.findFormById(formId, function(data) {
             if (data.length == 1) {
                 var form = data[0];
