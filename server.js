@@ -13,11 +13,12 @@ var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 var mongoose = require('mongoose');
 
 var connection_string = 'mongodb://localhost/cs5610';
+
 if (process.env.OPENSHIFT_MONGODB_URL) {
     connection_string = process.env.OPENSHIFT_MONGODB_URL +
         process.env.OPENSHIFT_APP_NAME;
 }
-
+console.log(connection_string);
 mongoose.connect(connection_string);
 
 var userModel = require("./public/assignment/server/models/user.model.js")(app, mongoose);
