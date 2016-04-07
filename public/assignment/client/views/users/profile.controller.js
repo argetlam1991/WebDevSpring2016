@@ -18,12 +18,13 @@
         function update(profileUsername,
                         profilePassword, profileFirstName, profileLastName) {
             console.log("click!");
-            var user = $rootScope.user;
+            var user = {};
             user.username = profileUsername;
             user.password = profilePassword;
             user.firstName = profileFirstName;
             user.lastName = profileLastName;
-            UserService.updateUser(user._id, user)
+            user.emails = [$scope.profileEmail];
+            UserService.updateUser($rootScope.user._id, user)
                 .success(function(response){
                     console.log(response);
                 });
