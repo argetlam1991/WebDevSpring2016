@@ -51,6 +51,7 @@ module.exports = function(app, mongoose, formModel) {
                 }
                 if (fieldIndex == -1) return ;
                 form.fields.splice(fieldIndex, 1);
+                form._id = undefined;
                 formModel.updateForm(formId, form, function(result) {
                     callback(result);
                 })
