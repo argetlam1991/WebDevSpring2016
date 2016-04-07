@@ -42,7 +42,7 @@ module.exports = function(app, mongoose) {
 
     userModel.update = function (userId, user, callback) {
         users.update({_id : userId}, user, function(err, results) {
-            console.log("Update:::::: " + results);
+            console.log(err);
             callback(results);
         });
     }
