@@ -17,8 +17,10 @@ var connection_string = 'mongodb://localhost/cs5610';
 if (process.env.OPENSHIFT_MONGODB_URL) {
     connection_string = process.env.OPENSHIFT_MONGODB_URL +
         process.env.OPENSHIFT_APP_NAME;
+} else {
+
 }
-console.log(connection_string);
+console.log("Debug::::::" + process.env.OPENSHIFT_MONGODB_URL);
 mongoose.connect(connection_string);
 
 var userModel = require("./public/assignment/server/models/user.model.js")(app, mongoose);
