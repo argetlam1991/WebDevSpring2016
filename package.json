@@ -25,7 +25,9 @@
   "dependencies": {
     "angular-ui-sortable": "^0.13.4",
     "body-parser": "^1.15.0",
+    "cloud-env": "^0.2.2",
     "express": "^3.21.2",
+    "mongoose": "^4.4.11",
     "multer": "^1.1.0",
     "node-uuid": "^1.4.7"
   },
