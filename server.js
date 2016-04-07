@@ -14,8 +14,8 @@ var mongoose = require('mongoose');
 
 var connection_string = 'mongodb://localhost/cs5610';
 
-if (process.env.OPENSHIFT_MONGODB_URL) {
-    connection_string = process.env.OPENSHIFT_MONGODB_URL +
+if (process.env.OPENSHIFT_MONGODB_DB_URL) {
+    connection_string = process.env.OPENSHIFT_MONGODB_DB_URL +
         process.env.OPENSHIFT_APP_NAME;
 } else {
 
