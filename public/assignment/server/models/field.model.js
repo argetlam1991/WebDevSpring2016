@@ -66,6 +66,7 @@ module.exports = function(app, mongoose, formModel) {
                 var form = data[0];
                 field._id = uuid.v4();
                 form.fields.push(field);
+                form._id = undefined;
                 formModel.updateForm(formId, form, function(result) {
                     callback(result);
                 })
@@ -83,6 +84,7 @@ module.exports = function(app, mongoose, formModel) {
                 var field = form.fields[pair.oldIndex];
                 form.fields.splice(pair.oldIndex, 1);
                 form.fields.splice(pair.newIndex, 0, field);
+                form._id = undefined;
                 formModel.updateForm(formId, form, function(result) {
                     callback(result);
                 })
@@ -106,6 +108,7 @@ module.exports = function(app, mongoose, formModel) {
                     callback(null);
                 } else {
                     form.fields[fieldIndex] = field;
+                    form._id = undefined;
                     formModel.updateForm(formId, form, function(result) {
                         callback(result);
                     })
