@@ -13,6 +13,7 @@
         $scope.profilePassword = $rootScope.user.password;
         $scope.profileFirstName = $rootScope.user.firstName;
         $scope.profileLastName = $rootScope.user.lastName;
+        $scope.profileEmail = $rootScope.user.emails;
 
         function update(profileUsername,
                         profilePassword, profileFirstName, profileLastName) {

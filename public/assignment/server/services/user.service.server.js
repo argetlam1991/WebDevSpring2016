@@ -4,47 +4,65 @@
 module.exports = function(app, userModel, db) {
 
     app.get('/api/assignment/user/usernameAndPassword', function (req, res) {
-        var user = userModel.findUserByCredentials(req.query.username, req.query.password);
-        console.log(user);
-        res.json(user);
-
+        userModel.findUserByCredentials(req.query.username, req.query.password, function(data){
+            if (data.length == 1) {
+                res.json(data[0]);
+            } else {
+                res.json(null);
+            }
+        });
     });
 
     app.get('/api/assignment/user/username', function (req, res) {
-        var user = userModel.findUserByUsername(req.query.username);
-        res.json(user);
-
+        userModel.findUserByUsername(req.query.username, function(data) {
+            if (data.length == 1) {
+                res.json(data[0]);
+            } else {
+                res.json(null);
+            }
+        });
     });
 
     app.get('/api/assignment/user/allUser', function (req, res) {
-        var users = userModel.findAll();
-        res.json(users);
-
+        userModel.findAll(function(data) {
+            res.json(data);
+        })
     });
 
     app.get('/api/assignment/user/:id', function (req, res) {
         var id = req.params.id;
-        var users = userModel.findById(id);
-        res.json(users);
-
+        userModel.findById(id, function(data) {
+            if (data.length == 1) {
+                res.json(data[0]);
+            } else {
+                res.json(null);
+            }
+        });
     });
 
     app.post('/api/assignment/user', function (req, res) {
-        var newUser = userModel.create(req.body);
-        res.json(newUser);
+        userModel.create(req.body, function(results) {
+            console.log(results);
+            res.json(results);
+        });
+
     });
 
     app.delete('/api/assignment/user/:id', function (req, res) {
         var id = req.params.id;
-        userModel.delete(id);
-        res.send("delete " + id);
+        userModel.delete(id, function(result) {
+            console.log(result);
+            res.send("delete " + id);
+        });
+
     });
 
     app.put('/api/assignment/user/:id', function (req, res) {
         var id = req.params.id;
         var user = req.body;
-        userModel.update(id, user);
-        res.json("updated");
+        userModel.update(id, user, function(results) {
+            res.json("updated");
+        });
     });
 
 

@@ -1,28 +1,17 @@
 /**
  * Created by guhan on 3/17/16.
  */
-module.exports = function(app) {
-    var uuid = require('node-uuid');
+module.exports = function(app, mongoose) {
 
     var formModel = {};
+    var FieldSchema = require("./field.schema.server.js")(mongoose);
+    var FormSchema = require("./form.schema.server.js")(mongoose, FieldSchema);
+    var forms = mongoose.model("form", FormSchema);
 
-    formModel.forms = require('./form.mock.json');
-
-    formModel.findFormByTitle = function (title) {
-
-        var index = -1;
-        for (var i = 0; i < this.forms.length; i++) {
-            if (this.forms[i].title == title) {
-                index = i;
-                break;
-            }
-        }
-        if (index != -1) {
-            return this.forms[index];
-        } else {
-            return null;
-        }
-
+    formModel.findFormByTitle = function (title, callback) {
+        forms.find({title : title}, function (err, data) {
+            callback(data);
+        })
     };
     
     formModel.findFieldByFieldId = function (id, form) {
@@ -34,42 +23,23 @@ module.exports = function(app) {
         return null;
     }
     
-    formModel.findFormById = function (id) {
-        var index = -1;
-        for (var i = 0; i < this.forms.length; i++) {
-            if (this.forms[i]._id == id) {
-                index = i;
-                break;
-            }
-        }
-        if (index != -1) {
-            return this.forms[index];
-        } else {
-            return null;
-        }
+    formModel.findFormById = function (id, callback) {
+        forms.find({_id : id}, function (err, data) {
+            callback(data);
+        })
     }
     
 
-    formModel.findFormsByUserId = function (userId) {
-        var res = [];
-        for (var i = 0; i < this.forms.length; i++) {
-            if (this.forms[i].userId == userId) {
-                res.push(this.forms[i]);
-            }
-        }
-        return res;
+    formModel.findFormsByUserId = function (userId, callback) {
+        forms.find({userId : userId}, function (err, data) {
+            callback(data);
+        })
     }
 
-    formModel.deleteForm = function (id) {
-        var index = -1;
-        for(var i = 0; i < this.forms.length; i++) {
-            if (this.forms[i]._id == id) {
-                index = i;
-            }
-        }
-        if (index > -1) {
-            this.forms.splice(index, 1);
-        }
+    formModel.deleteForm = function (id, callback) {
+        forms.remove({_id : id}, function(err, result){
+            callback(result);
+        });
     };
     
     formModel.deleteFieldInForm = function (formId, fieldId) {
@@ -92,10 +62,10 @@ module.exports = function(app) {
         
     }
 
-    formModel.createForm = function(userId, form) {
-        form._id = uuid.v4();
-        this.forms.push(form);
-        return form;
+    formModel.createForm = function(userId, form, callback) {
+        forms.create(form, function(err, results) {
+            callback(results);
+        });
     };
     
     formModel.createField = function(form, field) {
@@ -104,16 +74,10 @@ module.exports = function(app) {
         return field;
     }
 
-    formModel.updateForm = function(formId, form) {
-        var index = -1;
-        for(var i = 0; i < this.forms.length; i++) {
-            if (this.forms[i]._id == formId) {
-                index = i;
-            }
-        }
-        if (index > -1) {
-            this.forms[index] = form;
-        }
+    formModel.updateForm = function(formId, form, callback) {
+        forms.update({_id : formId}, form, function(err, results) {
+            callback(results);
+        });
     }
 
     formModel.updateFieldOrder = function(formId, pair) {
