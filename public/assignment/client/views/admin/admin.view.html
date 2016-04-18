@@ -6,72 +6,76 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th><span class="glyphicon glyphicon-triangle-bottom"></span>Username</th>
-                    <th><span class="glyphicon glyphicon-triangle-bottom"></span>Password</th>
-                    <th><span class="glyphicon glyphicon-triangle-bottom"></span>Role</th>
-                    <th><span class="glyphicon glyphicon-triangle-bottom"></span>Action</th>
+                    <th>
+                        <a ng-click="sortType = 'username'; sortReverse = !sortReverse">
+                            <span ng-show="!sortReverse" class="glyphicon glyphicon-triangle-bottom"></span>
+                            <span ng-show="sortReverse" class="glyphicon glyphicon-triangle-top"></span>
+
+                        </a>
+                    Username
+                    </th>
+                    <th>Password</th>
+                    <th>
+                        <a ng-click="sortType = 'firstName'; sortReverse = !sortReverse">
+                            <span ng-show="!sortReverse" class="glyphicon glyphicon-triangle-bottom"></span>
+                            <span ng-show="sortReverse" class="glyphicon glyphicon-triangle-top"></span>
+
+                        </a>
+                        First Name
+                    </th>
+                    <th>
+                        <a ng-click="sortType = 'lastName'; sortReverse = !sortReverse">
+                            <span ng-show="!sortReverse" class="glyphicon glyphicon-triangle-bottom"></span>
+                            <span ng-show="sortReverse" class="glyphicon glyphicon-triangle-top"></span>
+
+                        </a>
+                        Last Name
+                    </th>
+                    <th>Role</th>
+                    <th></span>Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td>
-                        <input type="text" class="form-control" placeholder="Username">
+                        <input ng-model = 'user.username' type="text" class="form-control" placeholder="Username">
                     </td>
                     <td>
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input ng-model = 'user.password' type="password" class="form-control" placeholder="Password">
                     </td>
                     <td>
-                        <input type="text" class="form-control" placeholder="role1, role2">
+                        <input ng-model = 'user.firstName' type="text" class="form-control" placeholder="First Name">
+                    </td>
+                    <td>
+                        <input ng-model = 'user.lastName' type="text" class="form-control" placeholder="Last Name">
+                    </td>
+                    <td>
+                        <input ng-model = 'user.roles' type="text" class="form-control" placeholder="roles as: roles1, roles2">
                     </td>
                     <td>
                         <div class="col-sm-6">
-                            <span class="glyphicon glyphicon-plus"></span>
+                            <span class="glyphicon glyphicon-plus" ng-click="add(user)"></span>
                         </div>
                         <div class="col-sm-6">
-                            <span class="glyphicon glyphicon-ok"></span>
+                            <span class="glyphicon glyphicon-ok" ng-click="update(user)"></span>
                         </div>
                     </td>
                 </tr>
-                <tr>
-                    <td>alice</td>
-                    <td></td>
-                    <td>student</td>
+                <tr ng-repeat="user in users | orderBy:sortType:sortReverse">
+                    <td>{{user.username}}</td>
+                    <td>{{user.password}}</td>
+                    <td>{{user.firstName}}</td>
+                    <td>{{user.lastName}}</td>
+                    <td>{{user.roles}}</td>
                     <td>
                         <div class="col-sm-6">
-                            <span class="glyphicon glyphicon-remove"></span>
+                            <span class="glyphicon glyphicon-remove" ng-click="remove(user)"></span>
                         </div>
                         <div class="col-sm-6">
-                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span class="glyphicon glyphicon-pencil" ng-click='select(user)'></span>
                         </div>
                     </td>
                 </tr>
-                <tr>
-                    <td>bob</td>
-                    <td></td>
-                    <td>faculty | admin</td>
-                    <td>
-                        <div class="col-sm-6">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </div>
-                        <div class="col-sm-6">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>charlie</td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <div class="col-sm-6">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </div>
-                        <div class="col-sm-6">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                        </div>
-                    </td>
-                </tr>
-
                 </tbody>
             </table>
             </div>

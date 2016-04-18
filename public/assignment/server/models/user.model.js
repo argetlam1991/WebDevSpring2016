@@ -9,48 +9,36 @@ module.exports = function(app, mongoose) {
     var users = mongoose.model("user", userSchema);
 
 
-    userModel.findUserByCredentials = function (username, password, callback) {
-        users.find({'username' : username, 'password' : password}, function (err, data) {
-            callback(data);
-        })
-
-    };
-
-    userModel.findUserByUsername = function (username, callback) {
-        users.find({'username' : username}, function (err, data) {
-            callback(data);
-        })
-    };
-
-    userModel.findById = function (id, callback) {
-        users.find({'_id' : id}, function (err, data) {
-            callback(data);
-        })
-    };
-
-    userModel.findAll = function (callback) {
-        users.find(function(err, data) {
-            callback(data);
+    userModel.findUserByCredentials = function (credentials) {
+        return users.findOne({
+            username : credentials.username,
+            password : credentials.password
         });
+
     };
 
-    userModel.create = function (user, callback) {
-        users.create(user, function(err, results) {
-            callback(results);
-        });
+    userModel.findUserByUsername = function (username) {
+        return users.findOne({username : username});
     };
 
-    userModel.update = function (userId, user, callback) {
-        users.update({_id : userId}, user, function(err, results) {
-            console.log(err);
-            callback(results);
-        });
+    userModel.findUserById = function (id) {
+        return users.findOne({'_id' : id});
+    };
+
+    userModel.findAllUsers = function () {
+        return users.find();
+    };
+
+    userModel.create = function (user) {
+        return users.create(user);
+    };
+
+    userModel.update = function (userId, user) {
+        return users.update({_id : userId}, user);
     }
 
-    userModel.delete = function (id, callback) {
-        users.remove({_id : id}, function(err, result){
-            callback(result);
-        });
+    userModel.delete = function (id) {
+        return users.remove({_id : id});
     };
 
     return userModel;

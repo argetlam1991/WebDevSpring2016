@@ -6,7 +6,7 @@
         .module("FormBuilderApp")
         .controller("HeaderController", HeaderController);
 
-    function HeaderController($scope, $rootScope, $location) {
+    function HeaderController($scope, $rootScope, $location, UserService) {
         $scope.$location = $location;
         $scope.hasLogin = hasLogin;
         $scope.adminLogin = adminLogin;
@@ -27,10 +27,17 @@
         }
 
         function logout() {
-            $rootScope.user = null;
-            $scope.user = null;
-            $location.path("/home");
-
+            UserService
+                .logout()
+                .then(
+                    function(response) {
+                        $rootScope.user = null;
+                        $location.path("/home");
+                    },
+                    function(err) {
+                        console.log(err);
+                    }
+                )
         }
     }
 })();

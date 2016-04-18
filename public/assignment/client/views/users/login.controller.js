@@ -9,8 +9,10 @@
         $scope.login = login;
 
         function login(username, password) {
-            console.log("click!");
-            UserService.findUserByCredentials(username, password)
+            var credential = {};
+            credential.username = username;
+            credential.password = password;
+            UserService.login(credential)
                 .then(function success(response){
                     $rootScope.user = response.data;
                     if ($rootScope.user != null) {

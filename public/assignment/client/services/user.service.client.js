@@ -9,42 +9,39 @@
 
     function UserService($http) {
         var service = {};
-
-        service.findUserByUsername = function(username) {
-           
-            return $http.get("/api/assignment/user/username?username=" + username);
-        };
-
-        service.findUserByCredentials = function(username, password) {
-
-            return $http.get("/api/assignment/user/usernameAndPassword?username=" + username + "&password=" + password);
-        };
-
-        service.finAllUsers = function() {
-
-            return $http.get("/api/assignment/user/allUser")
-                .success(function(response){
-                    var users = response;
-                    return users;
-                });
-        };
-
-        service.createUser = function(user) {
-            return $http.post("/api/assignment/user", user);
-
+        
+        service.login = function(credentials) {
+            return $http.post("/api/assignment/login", credentials);
         }
 
-        service.deleteUserById = function(id) {
-            return $http.delete("/api/assignment/user/" + id)
-                .success(function(response){
-                    console.log("delete " + id);
-                });
+        service.logout = function() {
+            return $http.post("/api/assignment/logout");
+        }
+
+        service.register = function(user) {
+            return $http.post("/api/assignment/register", user);
         }
 
         service.updateUser = function(id, user) {
-            return $http.put("/api/assignment/user/" + id, user);
-
+            return $http.put("/api/assignment/user" + id, user);
         }
+
+        service.findAllUsers = function() {
+            return $http.get("/api/assignment/admin/user");
+        }
+
+        service.add = function(user) {
+            return $http.post("/api/assignment/admin/user", user);
+        }
+
+        service.remove = function(id) {
+            return $http.delete("/api/assignment/admin/user/" + id);
+        }
+
+        service.update = function(id, user) {
+            return $http.put("/api/assignment/admin/user/" + id, user);
+        }
+        
         return  service;
     }
 })();

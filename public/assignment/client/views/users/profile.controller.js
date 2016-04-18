@@ -8,7 +8,6 @@
 
     function ProfileController($scope, $rootScope, UserService) {
         $scope.update = update;
-        console.log($rootScope.user);
         $scope.profileUsername = $rootScope.user.username;
         $scope.profilePassword = $rootScope.user.password;
         $scope.profileFirstName = $rootScope.user.firstName;
@@ -17,7 +16,6 @@
 
         function update(profileUsername,
                         profilePassword, profileFirstName, profileLastName) {
-            console.log("click!");
             var user = {};
             user.username = profileUsername;
             user.password = profilePassword;
@@ -25,10 +23,14 @@
             user.lastName = profileLastName;
             user.emails = [$scope.profileEmail];
             UserService.updateUser($rootScope.user._id, user)
-                .success(function(response){
-                    console.log(response);
-                });
-            $rootScope.user = user;
+                .then(
+                    function(response) {
+                        $rootScope.user = response.data;
+                    },
+                    function(err) {
+                        $scope.error = err;
+                    }
+                )
         }
     }
 })();
