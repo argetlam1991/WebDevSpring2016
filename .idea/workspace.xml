@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eb165639-12d3-4347-b998-b8ebf9478052" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/client/views/admin/admin.controller.js" afterPath="$PROJECT_DIR$/public/assignment/client/views/admin/admin.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/client/views/admin/admin.view.html" afterPath="$PROJECT_DIR$/public/assignment/client/views/admin/admin.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/server/services/user.service.server.js" afterPath="$PROJECT_DIR$/public/assignment/server/services/user.service.server.js" />
-    </list>
+    <list default="true" id="eb165639-12d3-4347-b998-b8ebf9478052" name="Default" comment="" />
     <ignored path="cs5610spring2016.git.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -506,12 +501,12 @@
       <workItem from="1459885811300" duration="19309000" />
       <workItem from="1460745957703" duration="12275000" />
       <workItem from="1460854568796" duration="1826000" />
-      <workItem from="1460918132344" duration="12651000" />
+      <workItem from="1460918132344" duration="12806000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102421000" />
+    <option name="totallyTimeSpent" value="102576000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="458" y="205" width="1615" height="801" extended-state="0" />
