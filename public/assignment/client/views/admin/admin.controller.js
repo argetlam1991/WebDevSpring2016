@@ -37,14 +37,20 @@
 
         function add(user)
         {
+            var newUser = {};
+            newUser.username = user.username;
+            newUser.password = user.password;
+            newUser.firstName = user.firstName;
+            newUser.lastName = user.lastName;
+            newUser.roles = user.roles;
             UserService
-                .add(user)
+                .add(newUser)
                 .then(handleSuccess, handleError);
         }
 
         function select(user)
         {
-            $scope.user = angular.copy(user);
+            $scope.choosedUser = angular.copy(user);
         }
 
         function handleSuccess(response) {

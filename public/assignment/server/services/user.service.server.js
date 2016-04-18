@@ -72,7 +72,7 @@ module.exports = function(app, userModel) {
                     if(user){
                         res.json(null);
                     } else {
-                        return userModel.createUser(newUser);
+                        return userModel.create(newUser);
                     }
                 },
                 function(err){
@@ -162,6 +162,7 @@ module.exports = function(app, userModel) {
                                     return userModel.findAllUsers();
                                 },
                                 function(err) {
+                                    console.log(err);
                                     res.status(400).send(err);
                                 }
                             );
@@ -212,7 +213,6 @@ module.exports = function(app, userModel) {
     function adminUpdateUser(req, res) {
         var newUser = req.body;
         if(isAdmin(req.user)) {
-
             userModel
                 .update(req.params.userId, newUser)
                 .then(
