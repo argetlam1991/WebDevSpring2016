@@ -30,8 +30,14 @@
 
         function update(user)
         {
+            var newUser = {};
+            newUser.username = user.username;
+            newUser.password = user.password;
+            newUser.firstName = user.firstName;
+            newUser.lastName = user.lastName;
+            newUser.roles = user.roles;
             UserService
-                .update(user._id, user)
+                .update(user._id, newUser)
                 .then(handleSuccess, handleError);
         }
 
