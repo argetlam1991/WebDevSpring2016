@@ -7,6 +7,7 @@ var session = require('express-session');
 
 var app = express();
 
+//PassportJS
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(multer());
@@ -18,7 +19,7 @@ app.use(session({
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static(__dirname + '/public/assignment'));
+app.use(express.static(__dirname + '/public'));
 
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
@@ -35,16 +36,19 @@ if (process.env.OPENSHIFT_MONGODB_DB_URL) {
 }
 mongoose.connect(connection_string);
 
-var userModel = require("./public/assignment/server/models/user.model.js")(app, mongoose);
-require("./public/assignment/server/services/user.service.server.js")(app, userModel);
+var assignmentUserModel = require('./public/assignment/server/models/user.model.js')(app, mongoose);
+var projectUserModel = require('./public/project/server/models/user.model.js')(app, mongoose);
 
-var formModel = require("./public/assignment/server/models/form.model.js")(app, mongoose);
-var fieldModel = require("./public/assignment/server/models/field.model.js")(app, mongoose, formModel);
-require("./public/assignment/server/services/form.service.js")(app, formModel);
-require("./public/assignment/server/services/field.service.server.js")(app, fieldModel);
+
+
+var passport = require("./public/security")(app, assignmentUserModel, projectUserModel);
+
+
+require("./public/assignment/server/app.js")(app, assignmentUserModel, mongoose, passport);
+require("./public/project/server/app.js")(app, projectUserModel, mongoose, passport);
 
 app.get('/', function(req, res){
-    res.redirect("/client/index.html");
+    res.redirect("./public/index.html");
 });
 
 app.listen(port, ipaddress);

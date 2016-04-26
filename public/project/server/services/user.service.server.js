@@ -2,19 +2,31 @@
  * Created by guhan on 3/17/16.
  */
 
-
 module.exports = function(app, userModel, passport) {
 
     var auth = authorized;
-    app.post('/api/assignment/login', passport.authenticate('assignment'), login);
-    app.post('/api/assignment/logout', logout);
-    app.post('/api/assignment/register', register);
-    app.get('/api/assignment/loggedin', loggedin);
-    app.put('/api/assignment/user/:userId', auth, updateUser);
-    app.get('/api/assignment/admin/user', auth, findAllUsers);
-    app.post('/api/assignment/admin/user', auth, createUser);
-    app.put('/api/assignment/admin/user/:userId', auth, adminUpdateUser);
-    app.delete('/api/assignment/admin/user/:userId', auth, deleteUser);
+    app.post('/api/project/user/login', passport.authenticate('project'), login);
+    app.post('/api/project/user/logout', logout);
+    app.post('/api/project/user/register', register);
+    app.get('/api/project/user/loggedin', loggedin);
+    app.get('/api/project/user/getUser/:id', getUserById);
+    app.put('/api/project/user/:userId', auth, updateUser);
+    app.get('/api/project/admin/user', auth, findAllUsers);
+    app.post('/api/project/admin/user', auth, createUser);
+    app.put('/api/project/admin/user/:userId', auth, adminUpdateUser);
+    app.delete('/api/project/admin/user/:userId', auth, deleteUser);
+
+    function getUserById(req, res) {
+        userModel.findUserById(req.params.id)
+            .then(
+                function(user) {
+                    res.json(user);
+                },
+                function(response) {
+                    res.send(400);
+                }
+            )
+    }
 
     function login(req, res) {
         var user = req.user;
@@ -28,7 +40,7 @@ module.exports = function(app, userModel, passport) {
 
     function register(req, res) {
         var newUser = req.body;
-        newUser.roles = ['student'];
+        newUser.roles = ['user'];
         userModel
             .findUserByUsername(newUser.username)
             .then(
@@ -61,7 +73,7 @@ module.exports = function(app, userModel, passport) {
         userModel.update(req.params.userId, newUser)
             .then(
                 function(user){
-                    return userModel.findUserById(user._id);
+                    return userModel.findUserById(req.params.userId);
                 },
                 function(err) {
                     res.status(400).send(err);
@@ -112,7 +124,7 @@ module.exports = function(app, userModel, passport) {
         if (newUser.roles && newUser.roles.length > 1) {
             newUser.roles = newUser.roles.split(',');
         } else {
-            newUser.roles = ['student'];
+            newUser.roles = ['user'];
         }
 
         userModel

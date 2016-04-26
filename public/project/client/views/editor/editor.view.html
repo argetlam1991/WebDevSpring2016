@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <form>
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" ng-model="article.title" class="form-control" id="title" placeholder="Title">
+        </div>
+
+        <div class="form-group">
+            <h3>
+                <span ng-repeat="topic in article.topics">
+                    <span class="label label-primary">{{topic}}</span>
+                </span>
+            </h3>
+        </div>
+
+        <div class="form-group input-group">
+            <input ng-model="topicText" type="text" class="form-control" placeholder="Add your topic here">
+            <span class="input-group-btn">
+                <button ng-click="addTopic(topicText)" class="btn btn-secondary" type="button">Add</button>
+            </span>
+        </div>
+
+
+        <div class="form-group" text-angular ng-model="article.body"
+             ta-toolbar-class="btn-toolbar"
+             ta-toolbar-group-class="btn-group"
+             ta-toolbar-button-class="btn btn-default" ta-toolbar-button-active-class="active">
+        </div>
+
+
+        <div class="form-group">
+            <div class="btn-group pull-right" role="group">
+                <button ng-click="submit()" type="button" class="btn-sm btn-info btn-primary">Submit</button>
+                <button type="button" class="btn-sm btn-info btn-danger">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>

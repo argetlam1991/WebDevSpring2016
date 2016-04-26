@@ -1,0 +1,82 @@
+
+<div class="container-fluid">
+            <h1>Admin</h1>
+            <h2>User</h2>
+            <div class = "table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>
+                        <a ng-click="sortType = 'username'; sortReverse = !sortReverse">
+                            <span ng-show="!sortReverse" class="glyphicon glyphicon-triangle-bottom"></span>
+                            <span ng-show="sortReverse" class="glyphicon glyphicon-triangle-top"></span>
+
+                        </a>
+                    Username
+                    </th>
+                    <th>Password</th>
+                    <th>
+                        <a ng-click="sortType = 'firstName'; sortReverse = !sortReverse">
+                            <span ng-show="!sortReverse" class="glyphicon glyphicon-triangle-bottom"></span>
+                            <span ng-show="sortReverse" class="glyphicon glyphicon-triangle-top"></span>
+
+                        </a>
+                        First Name
+                    </th>
+                    <th>
+                        <a ng-click="sortType = 'lastName'; sortReverse = !sortReverse">
+                            <span ng-show="!sortReverse" class="glyphicon glyphicon-triangle-bottom"></span>
+                            <span ng-show="sortReverse" class="glyphicon glyphicon-triangle-top"></span>
+
+                        </a>
+                        Last Name
+                    </th>
+                    <th>Role</th>
+                    <th></span>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <input ng-model = 'choosedUser.username' type="text" class="form-control" placeholder="Username">
+                    </td>
+                    <td>
+                        <input ng-model = 'choosedUser.password' type="password" class="form-control" placeholder="Password">
+                    </td>
+                    <td>
+                        <input ng-model = 'choosedUser.firstName' type="text" class="form-control" placeholder="First Name">
+                    </td>
+                    <td>
+                        <input ng-model = 'choosedUser.lastName' type="text" class="form-control" placeholder="Last Name">
+                    </td>
+                    <td>
+                        <input ng-model = 'choosedUser.roles' type="text" class="form-control" placeholder="roles as: roles1, roles2">
+                    </td>
+                    <td>
+                        <div class="col-sm-6">
+                            <span class="glyphicon glyphicon-plus" ng-click="add(choosedUser)"></span>
+                        </div>
+                        <div class="col-sm-6">
+                            <span class="glyphicon glyphicon-ok" ng-click="update(choosedUser)"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr ng-repeat="choosedUser in users | orderBy:sortType:sortReverse">
+                    <td>{{choosedUser.username}}</td>
+                    <td>{{choosedUser.password}}</td>
+                    <td>{{choosedUser.firstName}}</td>
+                    <td>{{choosedUser.lastName}}</td>
+                    <td>{{choosedUser.roles}}</td>
+                    <td>
+                        <div class="col-sm-6">
+                            <span class="glyphicon glyphicon-remove" ng-click="remove(choosedUser)"></span>
+                        </div>
+                        <div class="col-sm-6">
+                            <span class="glyphicon glyphicon-pencil" ng-click='select(choosedUser)'></span>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+</div>

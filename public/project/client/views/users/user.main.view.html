@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <form>
+        <div class="form-group">
+            <h1>{{user.username}}</h1>
+            <h5>connect info:  </h5>
+            <p>{{user.firstName}} {{user.lastName}}</p>
+            <p>email: {{retrieveEmails()}}</p>
+
+        </div>
+
+        <div class="form-group">
+            <ul class="nav nav-tabs">
+                <li ng-class="{active : isTab('article')}"><a href ng-click="setTab('article')">articles</a></li>
+                <li ng-class="{active : isTab('comment')}"><a href ng-click="setTab('comment')">comments</a></li>
+            </ul>
+            <div ng-show="isTab('article')" class="container-fluid">
+                <div infinite-scroll='loadMoreArticles()' infinite-scroll-scroll-distance='2'>
+                    <div ng-repeat="article in articles">
+                        <a href="#/articles/{{article._id}}/article"><h4>{{article.title}}</h4></a>
+                        <div ng-bind-html="article.body"></div>
+                        <hr class="divider">
+                    </div>
+                </div>
+            </div>
+            <div ng-show="isTab('comment')"  class="container-fluid">
+                <div infinite-scroll='loadMore()' infinite-scroll-scroll-distance='2'>
+                    <div ng-repeat="comment in comments">
+                        <a href="#/articles/{{comment.article}}/article"><h5>{{comment.body}}</h5></a>
+                        <hr class="divider">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>

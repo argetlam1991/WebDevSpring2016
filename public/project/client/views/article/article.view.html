@@ -1,0 +1,60 @@
+<div class="container-fluid">
+    <form>
+        <div class="form-group">
+            <h1>{{article.title}}</h1>
+            <p>by <a>{{article.author}}</a> on {{reFormat(article.date)}}</p>
+            <hr class="divider">
+        </div>
+
+        <div class="form-group">
+            <div ng-bind-html="article.body"></div>
+            <hr class="divider">
+        </div>
+
+        <div class="form-group">
+            <label>topics: </label>
+            <h3>
+                <span ng-repeat="topic in article.topics">
+                    <span class="label label-info">{{topic}}</span>
+                </span>
+            </h3>
+            <hr class="divider">
+        </div>
+
+        <div class="form-group">
+            <div class="navbar navbar-default">
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-show="deletePermission()" ng-click="deleteArticle()" class = "col-sm-2"><a>Delete</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-click="addComment()" class = "col-sm-2"><a>Comment</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-show="isAuthor()" class = "col-sm-2"><a href="#/editor/{{articleId}}">Edit</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <table class="table table-striped table-responsive">
+                <tbody>
+                <tr ng-repeat="comment in comments">
+                    <td>
+                        <form>
+                            <div class="form-group">
+                                <a>{{comment.author}}</a>:
+                            </div>
+                            <div class="form-group">
+                                <p>{{comment.body}}</p>
+                            </div>
+                            <div class="form-group pull-right">
+                                <p>{{comment.date}}</p>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>

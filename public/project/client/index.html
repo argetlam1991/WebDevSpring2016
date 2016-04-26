@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="TopicApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Welcome !</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- Optional theme -->
+
+    <script src="https://code.jquery.com/jquery-1.12.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://code.angularjs.org/1.5.0/angular.js"></script>
+    <script src="https://code.angularjs.org/1.5.0/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-animate.js"></script>
+    <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.13.4/sortable.js"></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.0/textAngular-sanitize.min.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.0/textAngular.min.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.0/textAngular-rangy.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/ngInfiniteScroll/1.2.2/ng-infinite-scroll.min.js'></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.0/textAngular.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body ng-controller="MainController">
+<div ng-include="'views/header/header.view.html'"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="main">
+            <div ng-view></div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="app.js"></script>
+<script src="config.js"></script>
+<script src="services/user.service.client.js"></script>
+<script src="services/article.service.client.js"></script>
+<script src="views/main/main.controller.js"></script>
+<script src="views/header/header.controller.js"></script>
+<script src="views/users/register.controller.js"></script>
+<script src="views/users/profile.controller.js"></script>
+<script src="views/users/login.controller.js"></script>
+<script src="views/users/user.main.controller.js"></script>
+<script src="views/admin/admin.controller.js"></script>
+<script src="views/editor/editor.controller.js"></script>
+<script src="views/article/article.controller.js"></script>
+<script src="views/article/comment-dialog.controller.js"></script>
+<script src="views/home/home.controller.js"></script>
+<script src="views/home/topic-dialog.controller.js"></script>
+
+</body>
+</html>

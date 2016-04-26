@@ -1,0 +1,35 @@
+<div class="container-fluid">
+            <h1 class="page-header col-sm-offset-1">Register</h1>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputUsername" class="col-sm-2 control-label">Username: </label>
+                    <div class="col-sm-6">
+                        <input type="text" ng-model="registerUsername" class="form-control" id="inputUsername" placeholder="Username">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="col-sm-2 control-label">Password: </label>
+                    <div class="col-sm-6">
+                        <input type="password" ng-model="registerPassword" class="form-control" id="inputPassword" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputVerify" class="col-sm-2 control-label">Verify Password: </label>
+                    <div class="col-sm-6">
+                        <input type="password" ng-model="registerVerify" class="form-control" id="inputVerify" placeholder="Verify Password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-sm-2 control-label">Email: </label>
+                    <div class="col-sm-6">
+                        <input type="email" ng-model="registerEmail" class="form-control" id="inputEmail" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" ng-click="register(registerUsername,
+                         registerPassword, registerVerify, registerEmail)" class="btn btn-default">Register</button>
+                    </div>
+                </div>
+            </form>
+</div>

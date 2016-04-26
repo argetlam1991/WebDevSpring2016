@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <h1>
+        Welcom!
+    </h1>
+    <div class="form-group">
+        <label><h5>Your topics:</h5></label>
+            <span ng-repeat="topic in topics">
+                <button  class="btn btn-sm btn-info">{{topic}} <span ng-click="removeTopic($index)" class="badge"><span class ="glyphicon glyphicon-remove"></span></span></button>
+            </span>
+        <button class="btn btn-sm btn-success" ng-click="addTopic()">more topics</button>
+
+
+    </div>
+
+    <hr class="divider">
+
+    <div infinite-scroll='loadMore()' infinite-scroll-scroll-distance='2'>
+        <div ng-repeat="article in articles">
+            <a href="#/articles/{{article._id}}/article"><h1>{{article.title}}</h1></a>
+            <p>By {{article.author}}</p>
+            <div ng-bind-html="article.body"></div>
+            <hr class="divider">
+        </div>
+    </div>
+</div>
