@@ -35,6 +35,7 @@ if (process.env.OPENSHIFT_MONGODB_DB_URL) {
 
 }
 mongoose.connect(connection_string);
+console.log(process.env.MY_API_KEY);
 
 var assignmentUserModel = require('./public/assignment/server/models/user.model.js')(app, mongoose);
 var projectUserModel = require('./public/project/server/models/user.model.js')(app, mongoose);
@@ -45,7 +46,7 @@ var passport = require("./public/security")(app, assignmentUserModel, projectUse
 
 
 require("./public/assignment/server/app.js")(app, assignmentUserModel, mongoose, passport);
-require("./public/project/server/app.js")(app, projectUserModel, mongoose, passport);
+require("./public/project/server/app.js")(app, projectUserModel, mongoose, passport, process.env.MY_API_KEY);
 
 app.get('/', function(req, res){
     res.redirect("./public/index.html");

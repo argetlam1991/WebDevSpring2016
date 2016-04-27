@@ -1,0 +1,14 @@
+<div class="container-fluid">
+
+    <h1>{{view}}</h1>
+    <ul class="container-fluid list-inline" >
+        <li ng-repeat="item in items">
+            <a>{{formattitle(item.snippet.title)}}</>
+            <a class = "thumbnail">
+                <img src = "{{item.snippet.thumbnails.default.url}}">
+            </a>
+        </li>
+
+    </ul>
+
+</div>

@@ -20,6 +20,10 @@
                         loggedin: checkCurrentUser
                     }
                 })
+                .when("/test", {
+                    templateUrl: "views/article/test.view.html",
+                    controller: "TestController",
+                })
                 .when("/editor", {
                     templateUrl: "views/editor/editor.view.html",
                     controller: "EditorController",
