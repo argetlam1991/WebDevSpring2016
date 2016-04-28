@@ -189,7 +189,9 @@ module.exports = function(app, userModel, articleModel, commentModel) {
                     commentModel.create(req.body)
                         .then(
                             function (comment) {
-                                article.comments.push(comment._id);
+                                console.log(article);
+                                article.commits.push(comment._id);
+                                console.log(article.commits);
                                 articleModel.update(req.params.articleId, article)
                                     .then(
                                         function (response) {
@@ -200,10 +202,10 @@ module.exports = function(app, userModel, articleModel, commentModel) {
                                         }
                                     )
                             },
-                            function (comment) {
+                            function (resoibse) {
                                 res.status(400).send(response);
                             }
-                        )
+                        );
                 },
                 function (response) {
                     res.status(400).send(response);
